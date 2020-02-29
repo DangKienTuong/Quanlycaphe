@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/views/manage/user.jsp=UTF-8
+encoding//i18n-res/category_vi.properties=UTF-8
+encoding//i18n-res/contact_vi.properties=UTF-8
+encoding//i18n-res/footer_vi.properties=UTF-8
+encoding//i18n-res/menu.properties=UTF-8
+encoding//i18n-res/menu_vi.properties=UTF-8
+encoding//i18n-res/product_vi.properties=UTF-8
+encoding//i18n-res/revenue_vi.properties=UTF-8
+encoding//i18n-res/sale_vi.properties=UTF-8
+encoding//i18n-res/top_vi.properties=UTF-8
+encoding//i18n-res/user_vi.properties=UTF-8
+encoding//src/poly/controller/Mailer2Controller.java=UTF-8
