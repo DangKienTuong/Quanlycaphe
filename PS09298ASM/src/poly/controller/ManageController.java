@@ -31,8 +31,4 @@ public class ManageController {
 		return "manage/top";
 	}
 
-	@RequestMapping("user")
-	public String user() {
-		return "manage/user";
-	}
 }
