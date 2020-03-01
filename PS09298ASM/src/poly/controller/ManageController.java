@@ -11,11 +11,6 @@ public class ManageController {
 		return "manage/product";
 	}
 
-	@RequestMapping("category")
-	public String category() {
-		return "manage/category";
-	}
-
 	@RequestMapping("revenue")
 	public String revenue() {
 		return "manage/revenue";
