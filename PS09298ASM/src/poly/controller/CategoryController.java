@@ -75,7 +75,6 @@ public class CategoryController {
 		try {
 			session.delete(category);
 			t.commit();
-			category.setId(null);
 			category.setName(null);
 			String hql = "FROM Category";
 			Query query = session.createQuery(hql);
@@ -90,12 +89,11 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "editCat", method = RequestMethod.POST)
-	public String edit(ModelMap model, @ModelAttribute("category") Category category, @RequestParam("id") String id,
+	public String edit(ModelMap model, @ModelAttribute("category") Category category,
 			@RequestParam("name") String name) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
-			category.setId(id);
 			category.setName(name);
 			session.update(category);
 			t.commit();

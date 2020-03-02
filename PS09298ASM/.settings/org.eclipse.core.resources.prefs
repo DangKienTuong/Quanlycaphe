@@ -12,4 +12,5 @@ encoding//i18n-res/top_vi.properties=UTF-8
 encoding//i18n-res/user_vi.properties=UTF-8
 encoding//src/poly/controller/CategoryController.java=UTF-8
 encoding//src/poly/controller/Mailer2Controller.java=UTF-8
+encoding//src/poly/controller/SaleController.java=UTF-8
 encoding//src/poly/controller/UserController.java=UTF-8

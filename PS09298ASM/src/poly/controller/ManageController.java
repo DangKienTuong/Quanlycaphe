@@ -16,11 +16,6 @@ public class ManageController {
 		return "manage/revenue";
 	}
 
-	@RequestMapping("sale")
-	public String sale() {
-		return "manage/sale";
-	}
-
 	@RequestMapping("top")
 	public String top() {
 		return "manage/top";

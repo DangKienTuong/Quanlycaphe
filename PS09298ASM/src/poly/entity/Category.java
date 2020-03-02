@@ -16,17 +16,17 @@ public class Category {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
-	private String id;
+	private int id;
 	@Column(name = "Name")
 	private String name;
 	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
 	private Collection<Product> products;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

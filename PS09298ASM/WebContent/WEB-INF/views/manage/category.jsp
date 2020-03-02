@@ -39,8 +39,7 @@
 						<form:form action="manage/editCat.htm"
 										method="POST">
 						<tr>
-							<td class="column1"><input value="${u.id}"
-									name="id"></td>
+							<td class="column1">${u.id}</td>
 							<td class="column1"><input value="${u.name}"
 									name="name"></td>
 							<td class="column6">

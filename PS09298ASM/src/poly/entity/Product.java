@@ -14,7 +14,7 @@ public class Product {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
-	private String id;
+	private int id;
 	@Column(name = "Name")
 	private String name;
 	@ManyToOne
@@ -27,11 +27,11 @@ public class Product {
 	@Column(name = "Describe")
 	private String describe;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
