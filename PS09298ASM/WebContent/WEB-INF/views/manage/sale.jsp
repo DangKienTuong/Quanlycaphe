@@ -53,7 +53,6 @@
 											</c:forEach>
 										</form:select></td>
 									<td class="column6"><form:hidden path="id" value="${u.id}" />
-									<form:hidden path="id" value="${u.date}" />
 										<button class="myButtonY">
 											<s:message code="sale.edit" />	
 										</button>

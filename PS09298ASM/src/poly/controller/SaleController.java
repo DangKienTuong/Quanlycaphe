@@ -104,14 +104,6 @@ public class SaleController {
 		return "manage/sale";
 	}
 
-	public Product findProduct(int ide) {
-		Session session = factory.getCurrentSession();
-		String hql = "FROM Product WHERE id LIKE '" + ide + "%'";
-		Query query = session.createQuery(hql);
-		Product list = (Product) query.uniqueResult();
-		return list;
-	}
-
 	@ModelAttribute("products")
 	public List<Product> getProduct() {
 		Session session = factory.getCurrentSession();
