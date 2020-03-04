@@ -15,3 +15,5 @@ encoding//src/poly/controller/Mailer2Controller.java=UTF-8
 encoding//src/poly/controller/ProductController.java=UTF-8
 encoding//src/poly/controller/SaleController.java=UTF-8
 encoding//src/poly/controller/UserController.java=UTF-8
+encoding//src/poly/entity/Category.java=UTF-8
+encoding//src/poly/entity/Product.java=UTF-8

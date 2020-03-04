@@ -35,26 +35,19 @@
 								</td>
 							</tr>
 						</form:form>
-						<form action="manage/insertPro.htm" method="post" enctype="multipart/form-data">
+						<form:form action="manage/apply.htm" modelAttribute="product" enctype="multipart/form-data">
 							<tr>
 								<td class="column1">Add...</td>
-								<td><input name="name" /></td>
-								<td><select name="categoryid">
-											<c:forEach items="${categories}" var="category">
-												<option
-													value="${category.id}">${category.name}</option>
-											</c:forEach>
-										</select></td>
+								<td></td>
+								<td></td>
 								<td><input type="file" name="photo" /></td>
-								<td><input name="price" /></td>
-								<td><textarea name="describe" /></textarea></td>
-								<td>
-									<button class="myButtonG">
+								<td></td>
+								<td></td>
+								<td><button class="myButtonG">
 										<s:message code="product.add" />
-									</button>
-								</td>
+									</button></td>
 							</tr>
-							</form>
+							</form:form>
 						<c:forEach var="u" items="${products}">
 							<form:form action="manage/editPro.htm" modelAttribute="product"
 								method="POST">
@@ -68,15 +61,12 @@
 													value="${category.id}">${category.name}</option>
 											</c:forEach>
 										</form:select></td>
-									<td class="column4"><img src="files/${photo_name}"
-										width="30px" height="40px">
-										<button class="myButtonY">
-											<s:message code="product.upload" />
-										</button></td>
+									<td class="column4">${u.photo}</td>
 									<td class="column5"><input value="${u.price}" name="price"></td>
 									<td class="column6"><textarea rows="3" cols="30"
 											name="describe">${u.describe}</textarea></td>
 									<td class="column6"><form:hidden path="id" value="${u.id}" />
+									<form:hidden path="id" value="${u.photo}" />
 										<button class="myButtonY">
 											<s:message code="product.edit" />
 										</button>

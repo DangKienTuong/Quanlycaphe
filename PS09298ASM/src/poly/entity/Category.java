@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = " Category")
 public class Category {
@@ -18,6 +20,7 @@ public class Category {
 	@Column(name = "ID")
 	private int id;
 	@Column(name = "Name")
+	@NotBlank(message = "Không được để trống tên danh mục !")
 	private String name;
 	@OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
 	private Collection<Product> products;

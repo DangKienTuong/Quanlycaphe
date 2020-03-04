@@ -29,7 +29,7 @@
 							method="POST">
 						<tr>
 							<td class="column1"></td>
-							<td><form:input path="name" /></td>
+							<td><form:input path="name" /><form:errors path="name"/></td>
 							<td>
 								<button class="myButtonG"><s:message code="category.add" /></button>
 							</td>
@@ -37,12 +37,14 @@
 						</form:form>
 						<c:forEach var="u" items="${categories}">
 						<form:form action="manage/editCat.htm"
-										method="POST">
+										method="POST" modelAttribute="category">
 						<tr>
 							<td class="column1">${u.id}</td>
-							<td class="column1"><input value="${u.name}"
+							<td><input value="${u.name}"
 									name="name"></td>
+									
 							<td class="column6">
+							<form:hidden path="id" value="${u.id}" />
 								<button class="myButtonY"><s:message code="category.edit" /></button>
 								</form:form> <form:form action="manage/deleteCat.htm" modelAttribute="category"
 										method="POST">

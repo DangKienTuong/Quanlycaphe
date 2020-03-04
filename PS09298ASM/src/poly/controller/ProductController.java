@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import poly.entity.Category;
 import poly.entity.Product;
+import poly.entity.Sale;
 
 @Transactional
 @Controller
@@ -55,18 +57,26 @@ public class ProductController {
 		return "manage/product";
 	}
 
-	ServletContext context;
-
 	@RequestMapping(value = "insertPro", method = RequestMethod.POST)
 
-	public String insert(ModelMap model, @RequestParam("photo") MultipartFile photo) {
+	public String insert(ModelMap model, @ModelAttribute("product") Product product, @RequestParam("name") String name,
+			@RequestParam("catid") int catid, @RequestParam("photo") String photo, @RequestParam("price") Double price,
+			@RequestParam("describe") String describe) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
 		try {
-			String photoPath = context.getRealPath("/files/" + photo.getOriginalFilename());
-			photo.transferTo(new File(photoPath));
-			model.addAttribute("photo_name", photo.getOriginalFilename());
-			return "apply";
+			product.setName(name);
+			product.setCategory(findCat(catid));
+			product.setPhoto("files/" + photo);
+			product.setPrice(price);
+			product.setDescribe(describe);
+			session.save(product);
+			t.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			t.rollback();
+			model.addAttribute("messageI", "Thất bại !");
+		} finally {
+			session.close();
 		}
 
 		return "manage/product";
@@ -92,10 +102,13 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "editPro", method = RequestMethod.POST)
-	public String edit(ModelMap model, @ModelAttribute("product") Product product) {
+	public String edit(ModelMap model, @ModelAttribute("product") Product product, @RequestParam("name") String name,
+			@RequestParam("price") Double price, @RequestParam("describe") String describe) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
+			product.setName(name);
+			product.setDescribe(describe);
 			session.update(product);
 			t.commit();
 			model.addAttribute("message", "Thêm mới thành công !");
@@ -125,4 +138,32 @@ public class ProductController {
 		return list;
 	}
 
+	@Autowired
+	ServletContext context;
+
+	@RequestMapping("apply")
+	public String apply(ModelMap model, @RequestParam("photo") MultipartFile photo) {
+		if (photo.isEmpty()) {
+			model.addAttribute("message", "Vui lòng chọn file !");
+		} else {
+			try {
+				String photoPath = context.getRealPath("/files/" + photo.getOriginalFilename());
+				photo.transferTo(new File(photoPath));
+				model.addAttribute("photo_name", photo.getOriginalFilename());
+				return "apply";
+			} catch (Exception e) {
+				model.addAttribute("message", "Lỗi lưu file !");
+			}
+		}
+		return "manage/product";
+
+	}
+
+	public Category findCategory(int ide) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM Category WHERE id LIKE '" + ide + "%'";
+		Query query = session.createQuery(hql);
+		Category list = (Category) query.uniqueResult();
+		return list;
+	}
 }
