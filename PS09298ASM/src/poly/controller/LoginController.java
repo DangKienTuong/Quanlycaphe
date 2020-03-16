@@ -2,6 +2,7 @@ package poly.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -23,7 +24,8 @@ public class LoginController {
 	SessionFactory factory;
 
 	@RequestMapping("login")
-	public String index(ModelMap model, @RequestParam("username") String username, @RequestParam("pass") String pass) {
+	public String index(ModelMap model, @RequestParam("username") String username, @RequestParam("pass") String pass,
+			HttpSession session1) {
 		Session session = factory.getCurrentSession();
 		String path = null;
 		try {
@@ -33,6 +35,7 @@ public class LoginController {
 			if (list.isEmpty()) {
 				path = "erorr";
 			} else {
+				session1.setAttribute("user", username);
 				path = "manage/welcome";
 			}
 		} catch (Exception e) {

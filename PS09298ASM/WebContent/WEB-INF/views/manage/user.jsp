@@ -35,8 +35,8 @@
 						<form:form action="manage/insert.htm" modelAttribute="user"
 							method="POST">
 							<tr>
-								<td class="column1"><form:input path="username" /></td>
-								<td class="column1"><form:input path="password" /></td>
+								<td class="column1"><form:input path="username" /><form:errors path="username"/></td>
+								<td class="column1"><form:input path="password" /><form:errors path="password"/></td>
 								<td class="column1"><form:input path="fullname" /></td>
 								<td>
 									<button class="myButtonG">

@@ -38,10 +38,10 @@
 						<form:form action="manage/apply.htm" modelAttribute="product" enctype="multipart/form-data">
 							<tr>
 								<td class="column1">Add...</td>
-								<td></td>
+								<td>${category.name}</td>
 								<td></td>
 								<td><input type="file" name="photo" /></td>
-								<td></td>
+								<td>${loigia}</td>
 								<td></td>
 								<td><button class="myButtonG">
 										<s:message code="product.add" />

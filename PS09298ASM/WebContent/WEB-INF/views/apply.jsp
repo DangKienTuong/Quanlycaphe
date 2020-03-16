@@ -13,21 +13,17 @@
 	<br>
 	<br>
 	<form action="manage/insertPro.htm" method="post">
-		<label>Name</label> <input name="name" /><br>
-		<br> <label>Category Name</label> <select name="catid">
+		<label>Name</label> <input name="name"/><br> <br> <label>Category
+			Name</label> <select name="catid">
 			<c:forEach items="${categories}" var="category">
 				<option value="${category.id}">${category.name}</option>
 			</c:forEach>
-		</select> <br>
-		<br> <label>Price</label> <input type="hidden" name="photo"
-			value="${photo_name}" /> <input name="price" /> <br>
+		</select> <br> <br> <label>Price</label> <input type="hidden"
+			name="photo" value="${photo_name}" /> <input name="price"/> <br>
 		<br> <label>Describe</label>
 		<textarea name="describe" rows="5" cols="30"></textarea>
-		<br>
-		<br>
+		<br> <br>
 		<button>Add</button>
-
-
 		<form>
 </body>
 </html>

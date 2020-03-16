@@ -64,21 +64,24 @@ public class ProductController {
 			@RequestParam("describe") String describe) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
-		try {
-			product.setName(name);
-			product.setCategory(findCat(catid));
-			product.setPhoto("files/" + photo);
-			product.setPrice(price);
-			product.setDescribe(describe);
-			session.save(product);
-			t.commit();
-		} catch (Exception e) {
-			t.rollback();
-			model.addAttribute("messageI", "Thất bại !");
-		} finally {
-			session.close();
+		if (price < 500 || price > 200000) {
+			model.addAttribute("loigia", "Giá không hợp lệ!");
+		} else {
+			try {
+				product.setName(name);
+				product.setCategory(findCat(catid));
+				product.setPhoto("files/" + photo);
+				product.setPrice(price);
+				product.setDescribe(describe);
+				session.save(product);
+				t.commit();
+			} catch (Exception e) {
+				t.rollback();
+				model.addAttribute("messageI", "Thất bại !");
+			} finally {
+				session.close();
+			}
 		}
-
 		return "manage/product";
 	}
 

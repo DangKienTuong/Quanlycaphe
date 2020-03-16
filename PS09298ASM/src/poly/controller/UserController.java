@@ -11,6 +11,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,22 +50,26 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
-	public String insert(ModelMap model, @ModelAttribute("user") User user) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
-		try {
-			session.save(user);
-			t.commit();
-			String hql = "FROM User";
-			Query query = session.createQuery(hql);
-			List<User> list = query.list();
-			model.addAttribute("users", list);
-			model.addAttribute("messageI", "Thành công !");
-		} catch (Exception e) {
-			t.rollback();
-			model.addAttribute("messageI", "Thất bại !");
-		} finally {
-			session.close();
+	public String insert(ModelMap model, @Validated @ModelAttribute("user") User user, BindingResult errors) {
+		if (errors.hasErrors()) {
+			model.addAttribute("message", "Vui lòng sửa các lỗi sau đây !");
+		} else {
+			Session session = factory.openSession();
+			Transaction t = session.beginTransaction();
+			try {
+				session.save(user);
+				t.commit();
+				String hql = "FROM User";
+				Query query = session.createQuery(hql);
+				List<User> list = query.list();
+				model.addAttribute("users", list);
+				model.addAttribute("messageI", "Thành công !");
+			} catch (Exception e) {
+				t.rollback();
+				model.addAttribute("messageI", "Thất bại !");
+			} finally {
+				session.close();
+			}
 		}
 		return "manage/user";
 	}

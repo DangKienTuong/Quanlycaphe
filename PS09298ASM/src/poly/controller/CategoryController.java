@@ -96,8 +96,8 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "editCat", method = RequestMethod.POST)
-	public String edit(ModelMap model, @ModelAttribute("category") Category category,
-			@RequestParam("name") String name) {
+	public String edit(ModelMap model, @Validated @ModelAttribute("category") Category category,
+			@RequestParam("name") String name, BindingResult errors) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
@@ -115,6 +115,8 @@ public class CategoryController {
 		} finally {
 			session.close();
 		}
+
 		return "manage/category";
+
 	}
 }

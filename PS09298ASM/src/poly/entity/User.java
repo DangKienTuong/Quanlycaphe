@@ -5,13 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = " Users")
 public class User {
 	@Id
 	@Column(name = "Username")
+	@NotBlank(message = "Không được để trống username !")
 	private String username;
 	@Column(name = "Password")
+	@NotBlank(message = "Không được để trống pass !")
 	private String password;
 	@Column(name = "Fullname")
 	private String fullname;
