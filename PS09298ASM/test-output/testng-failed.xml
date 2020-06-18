@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [example suite 1]">
+  <test thread-count="5" name="Regression suite 1(failed)">
     <classes>
-      <class name="poly.test.login">
+      <class name="poly.test.Login">
         <methods>
           <include name="terminateBrowser"/>
+          <include name="LOG02"/>
           <include name="LOG01"/>
           <include name="launchBrowser"/>
-          <include name="LOG02"/>
         </methods>
-      </class> <!-- poly.test.login -->
+      </class> <!-- poly.test.Login -->
+      <class name="poly.test.Product">
+        <methods>
+          <include name="SALE08"/>
+          <include name="launchBrowser"/>
+          <include name="terminateBrowser"/>
+          <include name="PRO14"/>
+        </methods>
+      </class> <!-- poly.test.Product -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Regression suite 1(failed) -->
+</suite> <!-- Failed suite [example suite 1] -->
