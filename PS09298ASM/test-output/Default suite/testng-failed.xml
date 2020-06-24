@@ -3,18 +3,20 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="poly.test.Category">
+      <class name="poly.test.Account">
         <methods>
-          <include name="CAT09"/>
-          <include name="CAT04"/>
-          <include name="launchBrowser"/>
+          <include name="ACC07"/>
+          <include name="ACC08"/>
           <include name="terminateBrowser"/>
-          <include name="CAT08"/>
-          <include name="CAT07"/>
-          <include name="CAT06"/>
-          <include name="CAT05"/>
+          <include name="ACC09"/>
+          <include name="suiteSetUp"/>
+          <include name="launchBrowser"/>
+          <include name="ACC04"/>
+          <include name="ACC05"/>
+          <include name="ACC06"/>
+          <include name="suiteTearDown"/>
         </methods>
-      </class> <!-- poly.test.Category -->
+      </class> <!-- poly.test.Account -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

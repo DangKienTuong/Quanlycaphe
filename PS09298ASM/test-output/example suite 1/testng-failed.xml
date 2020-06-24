@@ -13,9 +13,11 @@
       </class> <!-- poly.test.Login -->
       <class name="poly.test.Product">
         <methods>
-          <include name="SALE08"/>
+          <include name="PRO10"/>
           <include name="launchBrowser"/>
+          <include name="PRO12"/>
           <include name="terminateBrowser"/>
+          <include name="PRO08"/>
           <include name="PRO14"/>
         </methods>
       </class> <!-- poly.test.Product -->

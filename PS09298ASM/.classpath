@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="D:/Document/Advanced Testing/TaiNguyen/selenium-java-3.141.59/client-combined-3.141.59.jar"/>
 	<classpathentry kind="lib" path="D:/Document/Advanced Testing/TaiNguyen/selenium-java-3.141.59/client-combined-3.141.59-sources.jar"/>
 	<classpathentry kind="lib" path="D:/Document/Advanced Testing/TaiNguyen/selenium-server-standalone-3.13.0.jar"/>
+	<classpathentry kind="lib" path="D:/Document/Advanced Testing/TaiNguyen/poi-bin-3.17-20170915/poi-3.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

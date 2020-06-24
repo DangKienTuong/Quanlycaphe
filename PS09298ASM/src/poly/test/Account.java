@@ -2,14 +2,29 @@ package poly.test;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,6 +32,15 @@ public class Account {
 	public String BaseUrl = "http://localhost:8080/PS09298ASM/";
 	String driverPath = "D:\\Document\\Advanced Testing\\TaiNguyen\\chromedriver_win32\\chromedriver.exe";
 	public WebDriver driver;
+	public UIMap uiMap;
+	public UIMap datafile;
+	public String workingDir;
+
+	HSSFWorkbook workbook;
+
+	HSSFSheet sheet;
+
+	Map<String, Object[]> TestNGResults;
 
 	@BeforeTest
 	public void launchBrowser() {
@@ -40,6 +64,7 @@ public class Account {
 		List<WebElement> rowsAfter = driver.findElements(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr"));
 		int countAfter = rowsAfter.size();
 		Assert.assertEquals(countAfter, count);
+
 	}
 
 	@Test(priority = 1)
@@ -103,4 +128,5 @@ public class Account {
 	public void terminateBrowser() {
 		driver.close();
 	}
+
 }

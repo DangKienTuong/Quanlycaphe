@@ -95,7 +95,7 @@ public class Product {
 	}
 
 	@Test(priority = 3)
-	public void SALE08() {
+	public void PRO08() {
 		List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr"));
 		int count = rows.size();
 		driver.findElement(By.xpath("/html/body/div[1]/div/div/div/table/tbody/tr[" + count + "]/td[7]/form/button"))
